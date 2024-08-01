@@ -10,30 +10,32 @@ type User {
 }
   
 type Query {
-users: [User!]
-authUser: User
-user(userId:ID!): User
+  users: [User!]
+  authUser: User
+  user(userId:ID!): User
 }
 
 type Mutation {
-signUp(input: SignUpInput!): User
-signIn(input: SignInInput!): User
-logout: LogoutResponse
+  signUp(input: SignUpInput!): User
+  signIn(input: SignInInput!): User
+  logout: LogoutResponse
 }
 
 input SignUpInput {
-username: String!'
-name: String!
-password: String!
-email: String
+  username: String!
+  name: String!
+  password: String!
+  email: String
 }
 
 input SignInInput {
-username: String!
-password: String!
+  username: String!
+  password: String!
 }
 
 type LogoutResponse {
-message: String!
+  message: String!
 }
 `;
+
+export default userTypeDef;
