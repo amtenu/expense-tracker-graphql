@@ -6,9 +6,13 @@ import express from "express";
 import http from "http";
 import cors from "cors";
 
+import dotenv from "dotenv";
+import { connectDb } from "./db/connectDb.js"; // Importing the connectDb function from the db/connectDb.js file
+
 import mergedResolvers from "./resolvers/index.js";
 import typeDefs from "./typeDefs/index.js";
 
+dotenv.config();
 const app = express();
 
 const httpServer = http.createServer(app);
@@ -20,6 +24,8 @@ const server = new ApolloServer({
 });
 
 await server.start();
+
+await connectDb(); // Connecting to the database
 
 app.use(
   "/",
